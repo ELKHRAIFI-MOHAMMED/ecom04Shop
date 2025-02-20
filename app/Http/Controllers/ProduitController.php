@@ -33,7 +33,7 @@ class ProduitController extends Controller
         if($request->hasFile('image')){
             $image=$request->file('image');
             $file_name=time().'.'.$image->getClientOriginalExtension();
-            $image->storeAs('public',$file_name);
+            $image->move('image',$file_name);
             $new_product=Produit::create([
                 'nom'=>$request->nom,
                 'image'=>$file_name,
